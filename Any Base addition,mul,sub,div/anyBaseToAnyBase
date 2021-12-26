@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+
+        Scanner scn = new Scanner(System.in);
+        int n  = scn.nextInt();
+        int sorbase = scn.nextInt();
+        int desbase = scn.nextInt();
+
+        int digitofbase = gettoconvertedbase(n ,sorbase,desbase);
+        System.out.print(digitofbase);
+    }
+    public static int gettoconvertedbase(int n, int sorbase, int desbase){
+        int dec = getAnyBaseToDecimal(n , sorbase);
+        int finans = getDecimalToAnyBase(dec, desbase);
+        return finans;
+    }
+    public static int getAnyBaseToDecimal(int n, int b){
+        int ans = 0;
+        int p = 1;
+
+        while(n > 0){
+            int rem = n % 10;
+            n = n /10 ;
+
+            ans = ans + rem * p ;
+            p = p * b;
+        }
+        return ans;
+
+    }
+    public static int getDecimalToAnyBase(int n, int b){
+        int ans = 0;
+        int p = 1;
+
+        while(n >0){
+            int rem = n % b;
+            n = n / b;
+            
+            ans = ans + rem * p;
+            p = p * 10;
+        }
+        return ans;
+    }
+}
