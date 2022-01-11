@@ -1,0 +1,55 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        int []arr = {1,9,8,3,6,5,7,4};
+
+        mergeSort(arr, 0, arr.length-1);
+    }
+
+    public static int[] mergeSort(int[] arr, int fi, int li){
+        
+        if(fi == li){
+            int[] ba = new int[1];
+            ba[0] = arr[li];
+            return ba;
+        }
+
+        int mid = (fi + li) /2;
+        int[] arr1 = mergeSort(arr,fi,mid);
+        int[] arr2 = mergeSort(arr,mid+1,li);
+        int[] sarray = mergeTwoSortedArray(arr1,arr2);
+
+        return sarray;
+    }
+
+    public static int[] mergeTwoSortedArray(int[] arr1, int[] arr2){
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        int[] arr = new int[arr1.length + arr2.length];
+        while(i < arr1.length && j < arr2.length){
+            if(arr1[i] < arr2[j]){
+                arr[k] = arr1[i];
+                i++;
+                k++;
+            }else{
+                arr[k] = arr2[j];
+                j++;
+                k++;
+            }
+        }
+
+        if(i == arr1.length){
+            while(j < arr2.length){
+                arr[k] = arr2[j];
+            }
+        }else{
+            while(i < arr1.length){
+                arr[k] = arr1[i];
+            }
+        }
+
+        return arr;
+    }
+}

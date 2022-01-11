@@ -1,0 +1,12 @@
+// find kth element in the linked list
+import java.util.*;
+// given a linked list(Node datatype) with data and next as its members 
+public class Main{
+    public static void main(String[] args){
+        Node temp = head; // head points to the head of the linked list
+        for(int i = 1; i < k; i++){
+            temp = temp.next;
+        }
+
+    }
+}

@@ -1,0 +1,84 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        // approach : sort using merge sort and use two pointer method.
+
+        int[] arr = {0,-1,6,4,3,8,9};
+
+        int[] sortedarray = mergeSort(arr, 0, arr.length-1);
+        for(int c : sortedarray){
+            System.out.println(c + " ");
+        }
+        findTargetSumPair(sortedarray, 3);
+        
+    }
+
+    public static void findTargetSumPair(int[] sa, int tsum){
+        int li = 0;
+        int hi = sa.length;
+
+        while(li < hi){
+            int sum = sa[li]+ sa[hi];
+            if(sum > tsum){
+                hi--;
+            }else if(sum < tsum){
+                li++;
+            }else{
+                System.out.println("Order pair( " + sa[li] + " , " + sa[hi]+" )");
+                li++;
+                hi--;
+            }
+        }
+    }
+
+    public static int[] mergeSort(int[] arr, int li, int hi){
+        if(li == hi){
+            int[] ba = new int[1];
+            ba[0] = arr[li]; 
+            return ba;
+        }
+        int mid = (hi+li)/2;
+        int[] fsh = mergeSort(arr,li,mid);
+        int[] ssh = mergeSort(arr, mid+1, hi);
+        int[] fsa = mergeTwoSortedArrays(fsh, ssh); 
+        return fsa;
+    }
+
+    public static int[] mergeTwoSortedArrays(int[] arr1, int[] arr2){
+        
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        int[] sa = new int[arr1.length + arr2.length];
+
+        while(i < arr1.length && j < arr2.length){
+            if(arr1[i] < arr2[j]){
+                sa[k] = arr1[i];
+                k++;
+                i++;
+            }else{
+                sa[k] = arr2[j];
+                k++;
+                j++;
+            }
+        }
+
+        if(i == arr1.length){
+            while(j < arr2.length){
+                sa[k] = arr2[j];
+                j++;
+                k++;
+            }
+        }else{
+           while(i < arr1.length){
+               sa[k] = arr1[i];
+               i++;
+               k++;
+           } 
+        }
+
+        return sa;
+    }
+}
