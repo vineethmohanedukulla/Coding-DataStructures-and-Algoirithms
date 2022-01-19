@@ -47,16 +47,16 @@ public class Main {
   public static boolean find(Node node, int data) {
     // write your code here
     if(node.data == data){
-      return true;
-    }
-
-    for(Node child: node.children){
-      boolean val = find(child, data);
-      if(val == true){
         return true;
-      }
     }
-
+    
+    for(Node child: node.children){
+        boolean res = find(child, data);
+        if(res){
+            return res;
+        }
+    }
+    
     return false;
   }
 
