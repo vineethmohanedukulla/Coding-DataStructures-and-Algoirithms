@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) {
+    // Write your code here
+    PriorityQueue<Integer> pqueue = new PriorityQueue<>();
+    pqueue.add(100);
+    System.out.println(pqueue.peek());
+    pqueue.add(99);
+    System.out.println(pqueue.peek());
+    pqueue.add(98);
+    System.out.println(pqueue.peek());
+    pqueue.add(97);
+    System.out.println(pqueue.peek());
+    pqueue.add(96);
+    System.out.println(pqueue.peek());
+    pqueue.add(95);
+    System.out.println(pqueue.peek());
+    pqueue.add(94);
+    System.out.println(pqueue.peek());
+
+    System.out.println("---------------------");
+    pqueue.remove();
+    System.out.println(pqueue.peek());
+    pqueue.remove();
+    System.out.println(pqueue.peek());
+    pqueue.remove();
+    System.out.println(pqueue.peek());
+    pqueue.remove();
+    System.out.println(pqueue.peek());
+    pqueue.remove();
+    System.out.println(pqueue.peek());
+    pqueue.remove();
+    System.out.println(pqueue.peek());
+    pqueue.remove();
+    System.out.println(pqueue.peek());
+pqueue.remove();
+
+
+
+  }
+}
